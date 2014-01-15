@@ -17275,118 +17275,106 @@ b,a+p,i&&i[u]||(Math.round(k)==k?k:+k.toFixed(r))).attr(v)))}l=o.path(l);l.text=
     }
     
 })();
-var carers = {
-  urlUsers: '/carers-users',
-  // array to hold realtime user values
-  usersCount: [],
-
-  loadUsers: function() {
-    // clear the users array
-    carers.usersCount.length = 0;
-    $.ajax({
-      dataType: 'json',
-      cache: false,
-      url: carers.urlUsers,
-      success: function(d) {
-        var i, _i;
-        for (i=0, _i=d.data.length; i<_i; i++) {
-          carers.usersCount.push(d.data[i].unique_visitors)
-        }
-        // update the display
-        carers.updateUsersDisplay();
-      }
-    });
+var list = {
+  govuk: {
+    urlUsers: '/gov-users',
+    usersCount: [],
+    cssClass: '.gov'
   },
-
-  updateUsersDisplay: function() {
-    var r = getRandomInt(0, carers.usersCount.length);
-    $('.figure.carers').text(carers.usersCount[r]);
+  carers: {
+    urlUsers: '/carers-users',
+    usersCount: [],
+    cssClass: '.carers'
   },
-
+  licensing: {
+    urlUsers: '/licensing-users',
+    usersCount: [],
+    cssClass: '.licensing'
+  },
+  legalise: {
+    urlUsers: '/legalise-users',
+    usersCount: [],
+    cssClass: '.legalise'
+  },
+  legalisePremium: {
+    urlUsers: '/legalise-premium-users',
+    usersCount: [],
+    cssClass: '.legalise-premium'
+  },
+  marriedAbroad: {
+    urlUsers: '/married-abroad-users',
+    usersCount: [],
+    cssClass: '.married-abroad'
+  },
+  birthAbroad: {
+    urlUsers: '/birth-abroad-users',
+    usersCount: [],
+    cssClass: '.birth-abroad'
+  },
+  deathAbroad: {
+    urlUsers: '/death-abroad-users',
+    usersCount: [],
+    cssClass: '.death-abroad'
+  },
+  sorn: {
+    urlUsers: '/sorn-users',
+    usersCount: [],
+    cssClass: '.sorn'
+  },
+  taxDisc: {
+    urlUsers: '/tax-disc-users',
+    usersCount: [],
+    cssClass: '.tax-disc'
+  }
 };
 
-var taxDisc = {
-  urlUsers: '/tax-disc-users',
-  // array to hold realtime user values
-  usersCount: [],
+var loadRealtime = {
 
-  loadUsers: function() {
+  loadUsers: function(obj) {
     // clear the users array
-    taxDisc.usersCount.length = 0;
+    obj.usersCount.length = 0;
     $.ajax({
       dataType: 'json',
       cache: false,
-      url: taxDisc.urlUsers,
+      url: obj.urlUsers,
       success: function(d) {
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
-          taxDisc.usersCount.push(d.data[i].unique_visitors)
+          obj.usersCount.push(d.data[i].unique_visitors)
         }
         // update the display
-        taxDisc.updateUsersDisplay();
+        loadRealtime.updateUsersDisplay(obj);
       }
     });
   },
 
-  updateUsersDisplay: function() {
-    var r = getRandomInt(0, taxDisc.usersCount.length);
-    $('.figure.tax-disc').text(taxDisc.usersCount[r]);
+  reloadUsers: function() {
+    for (var item in list) {
+      loadRealtime.loadUsers(list[item]);
+    }
   },
 
-};
-
-var sorn = {
-  urlUsers: '/sorn-users',
-  // array to hold realtime user values
-  usersCount: [],
-
-  loadUsers: function() {
-    // clear the users array
-    sorn.usersCount.length = 0;
-    $.ajax({
-      dataType: 'json',
-      cache: false,
-      url: sorn.urlUsers,
-      success: function(d) {
-        var i, _i;
-        for (i=0, _i=d.data.length; i<_i; i++) {
-          sorn.usersCount.push(d.data[i].unique_visitors)
-        }
-        // update the display
-        sorn.updateUsersDisplay();
-      }
-    });
+  updateUsersDisplay: function(obj) {
+    var r = getRandomInt(0, obj.usersCount.length);
+    $('.figure' + obj.cssClass).text(obj.usersCount[r]);
   },
 
-  updateUsersDisplay: function() {
-    var r = getRandomInt(0, sorn.usersCount.length);
-    $('.figure.sorn').text(sorn.usersCount[r]);
-  },
+  wobbleDisplays: function() {
+    for (var item in list) {
+      loadRealtime.updateUsersDisplay(list[item]);
+    }
+  }
 
 };
 
 $(function() {
+  loadRealtime.reloadUsers();
 
-  // carer's allowance
-  carers.loadUsers();
   // set up a "wobble"
-  var carersWobble = window.setInterval(carers.updateUsersDisplay, 10e3);
+  var wobble = window.setInterval(loadRealtime.wobbleDisplays, 10e3);
   // poll gov.uk once every 5 minutes
-  var carersUpdate = window.setInterval(carers.loadUsers, 300e3);
+  var update = window.setInterval(loadRealtime.reloadUsers, 300e3);
 
-  // sorn
-  sorn.loadUsers();
-  // set up a "wobble"
-  var sornWobble = window.setInterval(sorn.updateUsersDisplay, 10e3);
-  // poll gov.uk once every 5 minutes
-  var sornUpdate = window.setInterval(sorn.loadUsers, 300e3);
-
-  // tax disc
-  taxDisc.loadUsers();
-  // set up a "wobble"
-  var taxDiscWobble = window.setInterval(taxDisc.updateUsersDisplay, 10e3);
-  // poll gov.uk once every 5 minutes
-  var taxDiscUpdate = window.setInterval(taxDisc.loadUsers, 300e3);
 });
 
 // very cheap and cheerful
