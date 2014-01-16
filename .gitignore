@@ -8,7 +8,7 @@ node_modules
 
 # Ruby + Gems #
 ###############
-Gemfile.lock
+# Gemfile.lock
 
 # Compiled source #
 ###################
