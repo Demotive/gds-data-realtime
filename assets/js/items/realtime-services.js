@@ -54,13 +54,13 @@ var list = {
 var loadRealtime = {
 
   loadUsers: function(obj) {
-    // clear the users array
-    obj.usersCount.length = 0;
     $.ajax({
       dataType: 'json',
       cache: false,
       url: obj.urlUsers,
       success: function(d) {
+        // clear the users array (on success)
+        obj.usersCount.length = 0;
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
           obj.usersCount.push(d.data[i].unique_visitors)
@@ -78,8 +78,8 @@ var loadRealtime = {
   },
 
   updateUsersDisplay: function(obj) {
-    var r = getRandomInt(0, obj.usersCount.length);
-    $('.figure' + obj.cssClass).text(obj.usersCount[r]);
+    var r = getRandomInt(0, obj.usersCount.length-1);
+    $(obj.cssClass + ' .figure').text(addCommas(obj.usersCount[r]));
   },
 
   wobbleDisplays: function() {
@@ -95,7 +95,7 @@ $(function() {
 
   // set up a "wobble"
   var wobble = window.setInterval(loadRealtime.wobbleDisplays, 10e3);
-  // poll gov.uk once every 5 minutes
-  var update = window.setInterval(loadRealtime.reloadUsers, 300e3);
+  // poll gov.uk once every hour(?)
+  var update = window.setInterval(loadRealtime.reloadUsers, 3600000);
 
 });
