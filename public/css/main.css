@@ -184,9 +184,15 @@ body {
   }
 }
 
+/* ******************************************************** */
 /* GOV.UK logo */
+.crown {
+  position: relative;
+  top: 2px;
+}
+
 .govuk {
-  font-size: 95%;
+  font-size: 80px;
   text-transform: uppercase;
 }
 .govuk.dot {

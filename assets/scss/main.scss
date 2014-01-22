@@ -167,13 +167,18 @@ $small-standard-diameter: 140px;
     }
 }
 
+/* ******************************************************** */
+
 /* GOV.UK logo */
+.crown {
+    position:relative;
+    top:2px;
+}
 .govuk {
-    font-size: 95%;
+    font-size: 80px;
     text-transform: uppercase;
     &.dot {
         position: relative;
         margin-left: -0.09em;
     }
 }
-
