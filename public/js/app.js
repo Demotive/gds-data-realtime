@@ -17276,11 +17276,6 @@ b,a+p,i&&i[u]||(Math.round(k)==k?k:+k.toFixed(r))).attr(v)))}l=o.path(l);l.text=
     
 })();
 var list = {
-  govuk: {
-    urlUsers: '/gov-users',
-    usersCount: [],
-    cssClass: '.gov'
-  },
   carers: {
     urlUsers: '/carers-users',
     usersCount: [],

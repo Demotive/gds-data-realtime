@@ -17,18 +17,6 @@ end
 
 #===========
 
-# GOV realtime visitors
-get '/gov-users' do
-  cache_control :public, :max_age => 20
-  http = Net::HTTP.new('www.performance.service.gov.uk', 443)
-  http.use_ssl = true
-  req = Net::HTTP::Get.new("/data/government/realtime?sort_by=_timestamp%3Adescending&limit=5")
-  response = http.request(req)
-  response.body
-end
-
-#===========
-
 # Carers realtime visitors
 get '/carers-users' do
   cache_control :public, :max_age => 20

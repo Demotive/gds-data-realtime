@@ -1,9 +1,4 @@
 var list = {
-  govuk: {
-    urlUsers: '/gov-users',
-    usersCount: [],
-    cssClass: '.gov'
-  },
   carers: {
     urlUsers: '/carers-users',
     usersCount: [],
