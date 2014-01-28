@@ -2,16 +2,12 @@
 @import 'colours';
 @import 'mats_mixins';
 
+$govuk-blue: #005ea5;
+
 $xlarge: "min-width: 1900px";
 $large: "min-width: 1600px";
 $medium: "min-width: 1200px";
 $small: "min-width: 1000px";
-
-%title-underline {
-    display: inline-block;
-    line-height: 0.8;
-    border-bottom: 3px solid;
-}
 
 /* ******************************************************** */
 
@@ -29,9 +25,12 @@ body {
     height: 100%;
     /*overflow: hidden;*/
     /*cursor: none;*/
-	font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
-	font-weight: bold;
-	color: $black;
+    font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 1.18;
+	color: $white;
+    background-color: $govuk-blue;
 }
 
 .item {
@@ -42,7 +41,6 @@ body {
 	right: -100%;
 	-webkit-transform: translateZ(0);
 	transition: right 0.5s ease-out;
-	background-color: $white;
 	&.now {
 		right: 0%;
 		z-index: 2;
@@ -66,103 +64,88 @@ body {
 
 /* ******************************************************** */
 
-/* key colours */
-.multiple-realtime .key-colour {
-    background-color: $green;
-}
-
-
-/* ******************************************************** */
-
 /* figure grid */
 .figure-grid {
-    padding: 0 5%;
-    .title {
-        font-size: 3.75em;
-        @extend %title-underline;
-    }
-}
-.figure-items {
-    padding: 2% 0;
+    width: 92%;
 }
 
 .figure-item {
     float: left;
-    padding: 0 2% 2% 0;
+    padding: 6% 3% 10% 0;
+    text-align: center;
     .figure {
         border-radius: 100%;
-        color: $white;
         margin-bottom: 0.2em;
-        text-align: center;
+        color: $govuk-blue;
+        background-color: $white;
     }
     .figure-title {
-        height: 3em;
-        font-size: 2em;
+        font-weight: normal;
         line-height: 1.1;
     }
 }
 
-$xlarge-standard-diameter: 200px;
-$large-standard-diameter: 175px;
-$medium-standard-diameter: 140px;
-$small-standard-diameter: 140px;
+$xlarge-standard-diameter: 296px;
+$large-standard-diameter: 296px;
+$medium-standard-diameter: 296px;
+$small-standard-diameter: 296px;
 
 .figure-item {
     width: $small-standard-diameter;
     .figure {
-        font-size: 3.5em;
+        font-size: 120px;
         height: $small-standard-diameter;
         line-height: $small-standard-diameter;
     }
     .figure-title {
-        font-size: 1.5em;
+        font-size: 36px;
     }
 
     @media ($small) {
         width: $small-standard-diameter;
         .figure {
-            font-size: 3.5em;
+            font-size: 120px;
             height: $small-standard-diameter;
             line-height: $small-standard-diameter;
         }
         .figure-title {
-            font-size: 1.5em;
+            font-size: 36px;
         }
     }
 
     @media ($medium) {
         width: $medium-standard-diameter;
         .figure {
-            font-size: 3.5em;
+            font-size: 120px;
             height: $medium-standard-diameter;
             line-height: $medium-standard-diameter;
         }
         .figure-title {
-            font-size: 1.5em;
+            font-size: 36px;
         }
     }
 
     @media ($large) {
         width: $large-standard-diameter;
         .figure {
-            font-size: 4em;
+            font-size: 120px;
             height: $large-standard-diameter;
             line-height: $large-standard-diameter;
         }
         .figure-title {
-            font-size: 1.75em;
+            font-size: 36px;
         }
     }
 
     @media ($xlarge) {
         width: $xlarge-standard-diameter;
         .figure {
-            font-size: 5em;
+            font-size: 120px;
             height: $xlarge-standard-diameter;
             line-height: $xlarge-standard-diameter;
         }
         .figure-title {
-            font-size: 2em;
+            font-size: 36px;
         }
     }
 }
@@ -175,10 +158,17 @@ $small-standard-diameter: 140px;
     top:2px;
 }
 .govuk {
-    font-size: 80px;
     text-transform: uppercase;
     &.dot {
         position: relative;
         margin-left: -0.09em;
     }
+}
+
+
+/* ******************************************************** */
+
+.pp-powered {
+    clear: both;
+    font-size: 27px;
 }

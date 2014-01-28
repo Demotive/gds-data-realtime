@@ -9,31 +9,6 @@ var list = {
     usersCount: [],
     cssClass: '.licensing'
   },
-  legalise: {
-    urlUsers: '/legalise-users',
-    usersCount: [],
-    cssClass: '.legalise'
-  },
-  legalisePremium: {
-    urlUsers: '/legalise-premium-users',
-    usersCount: [],
-    cssClass: '.legalise-premium'
-  },
-  marriedAbroad: {
-    urlUsers: '/married-abroad-users',
-    usersCount: [],
-    cssClass: '.married-abroad'
-  },
-  birthAbroad: {
-    urlUsers: '/birth-abroad-users',
-    usersCount: [],
-    cssClass: '.birth-abroad'
-  },
-  deathAbroad: {
-    urlUsers: '/death-abroad-users',
-    usersCount: [],
-    cssClass: '.death-abroad'
-  },
   sorn: {
     urlUsers: '/sorn-users',
     usersCount: [],
@@ -45,6 +20,26 @@ var list = {
     cssClass: '.tax-disc'
   }
 };
+
+var fcoList = {
+  legalise: {
+    urlUsers: '/legalise-users'
+  },
+  legalisePremium: {
+    urlUsers: '/legalise-premium-users'
+  },
+  marriedAbroad: {
+    urlUsers: '/married-abroad-users'
+  },
+  birthAbroad: {
+    urlUsers: '/birth-abroad-users'
+  },
+  deathAbroad: {
+    urlUsers: '/death-abroad-users'
+  }
+};
+
+var fcoCount = [0, 0, 0, 0, 0];
 
 var loadRealtime = {
 
@@ -66,9 +61,28 @@ var loadRealtime = {
     });
   },
 
+  loadFCOUsers: function(obj) {
+    $.ajax({
+      dataType: 'json',
+      cache: false,
+      url: obj.urlUsers,
+      success: function(d) {
+        var i, _i;
+        for (i=0, _i=d.data.length; i<_i; i++) {
+          fcoCount[i] = fcoCount[i] + parseInt(d.data[i].unique_visitors);
+        }
+        // update the display
+        loadRealtime.updateFCOUsersDisplay();
+      }
+    });
+  },
+
   reloadUsers: function() {
     for (var item in list) {
       loadRealtime.loadUsers(list[item]);
+    }
+    for (var item in fcoList) {
+      loadRealtime.loadFCOUsers(fcoList[item]);
     }
   },
 
@@ -77,10 +91,16 @@ var loadRealtime = {
     $(obj.cssClass + ' .figure').text(addCommas(obj.usersCount[r]));
   },
 
+  updateFCOUsersDisplay: function() {
+    var r = getRandomInt(0, fcoCount.length-1);
+    $('.fco .figure').text(addCommas(fcoCount[r]));
+  },
+
   wobbleDisplays: function() {
     for (var item in list) {
       loadRealtime.updateUsersDisplay(list[item]);
     }
+    loadRealtime.updateFCOUsersDisplay();
   }
 
 };
