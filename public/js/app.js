@@ -17344,6 +17344,8 @@ var loadRealtime = {
       cache: false,
       url: obj.urlUsers,
       success: function(d) {
+        // reset the FCO count (on success)
+        fcoCount = [0, 0, 0, 0, 0];
         var i, _i;
         for (i=0, _i=d.data.length; i<_i; i++) {
           fcoCount[i] = fcoCount[i] + parseInt(d.data[i].unique_visitors);
