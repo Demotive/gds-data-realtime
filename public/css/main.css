@@ -51,10 +51,25 @@ body {
   /*cursor: none;*/
   font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
   font-weight: bold;
-  font-size: 80px;
   line-height: 1.18;
   color: white;
   background-color: #005ea5;
+  font-size: 25px;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 60px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  body {
+    font-size: 80px;
+  }
 }
 
 .item {
@@ -89,7 +104,7 @@ body {
 
 .figure-item {
   float: left;
-  padding: 6% 3% 10% 0;
+  padding: 6% 3% 0 0;
   text-align: center;
 }
 .figure-item .figure {
@@ -104,66 +119,49 @@ body {
 }
 
 .figure-item {
-  width: 296px;
+  width: 75px;
 }
 .figure-item .figure {
-  font-size: 120px;
-  height: 296px;
-  line-height: 296px;
+  font-size: 140%;
+  height: 75px;
+  line-height: 75px;
 }
 .figure-item .figure-title {
-  font-size: 36px;
+  font-size: 60%;
+  height: 2em;
 }
-@media (min-width: 1000px) {
+@media screen and (min-width: 768px) {
+  .figure-item {
+    width: 160px;
+  }
+  .figure-item .figure {
+    height: 160px;
+    line-height: 160px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .figure-item {
+    width: 200px;
+  }
+  .figure-item .figure {
+    height: 200px;
+    line-height: 200px;
+  }
+  .figure-item .figure-title {
+    font-size: 35%;
+  }
+}
+@media screen and (min-width: 1900px) {
   .figure-item {
     width: 296px;
   }
   .figure-item .figure {
-    font-size: 120px;
+    font-size: 150%;
     height: 296px;
     line-height: 296px;
   }
   .figure-item .figure-title {
-    font-size: 36px;
-  }
-}
-@media (min-width: 1200px) {
-  .figure-item {
-    width: 296px;
-  }
-  .figure-item .figure {
-    font-size: 120px;
-    height: 296px;
-    line-height: 296px;
-  }
-  .figure-item .figure-title {
-    font-size: 36px;
-  }
-}
-@media (min-width: 1600px) {
-  .figure-item {
-    width: 296px;
-  }
-  .figure-item .figure {
-    font-size: 120px;
-    height: 296px;
-    line-height: 296px;
-  }
-  .figure-item .figure-title {
-    font-size: 36px;
-  }
-}
-@media (min-width: 1900px) {
-  .figure-item {
-    width: 296px;
-  }
-  .figure-item .figure {
-    font-size: 120px;
-    height: 296px;
-    line-height: 296px;
-  }
-  .figure-item .figure-title {
-    font-size: 36px;
+    font-size: 45%;
   }
 }
 
@@ -172,6 +170,22 @@ body {
 .crown {
   position: relative;
   top: 2px;
+  width: 36px;
+}
+@media screen and (min-width: 768px) {
+  .crown {
+    width: 52px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .crown {
+    width: 75px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .crown {
+    width: 96px;
+  }
 }
 
 .govuk {
@@ -185,5 +199,11 @@ body {
 /* ******************************************************** */
 .pp-powered {
   clear: both;
-  font-size: 27px;
+  padding-top: 6%;
+  font-size: 50%;
+}
+@media screen and (min-width: 1200px) {
+  .pp-powered {
+    font-size: 33.75%;
+  }
 }
