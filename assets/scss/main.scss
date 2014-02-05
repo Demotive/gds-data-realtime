@@ -4,10 +4,9 @@
 
 $govuk-blue: #005ea5;
 
-$xlarge: "min-width: 1900px";
-$large: "min-width: 1600px";
-$medium: "min-width: 1200px";
-$small: "min-width: 1000px";
+$xlarge: "screen and (min-width: 1900px)";
+$large: "screen and (min-width: 1200px)";
+$tablet: "screen and (min-width: 768px)";
 
 /* ******************************************************** */
 
@@ -27,10 +26,13 @@ body {
     /*cursor: none;*/
     font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
     font-weight: bold;
-    font-size: 80px;
     line-height: 1.18;
 	color: $white;
     background-color: $govuk-blue;
+    font-size: 25px;
+    @media #{$tablet} { font-size: 40px; }
+    @media #{$large} { font-size: 60px; }
+    @media #{$xlarge} { font-size: 80px; }
 }
 
 .item {
@@ -71,7 +73,8 @@ body {
 
 .figure-item {
     float: left;
-    padding: 6% 3% 10% 0;
+    padding: 6% 3% 0 0;
+    //padding-bottom: 10%;
     text-align: center;
     .figure {
         border-radius: 100%;
@@ -86,66 +89,50 @@ body {
 }
 
 $xlarge-standard-diameter: 296px;
-$large-standard-diameter: 296px;
-$medium-standard-diameter: 296px;
-$small-standard-diameter: 296px;
+$large-standard-diameter: 200px;
+$tablet-standard-diameter: 160px;
+$mobile-standard-diameter: 75px;
 
 .figure-item {
-    width: $small-standard-diameter;
+    width: $mobile-standard-diameter;
     .figure {
-        font-size: 120px;
-        height: $small-standard-diameter;
-        line-height: $small-standard-diameter;
+        font-size: 140%;
+        height: $mobile-standard-diameter;
+        line-height: $mobile-standard-diameter;
     }
     .figure-title {
-        font-size: 36px;
+        font-size: 60%;
+        height: 2em;
     }
 
-    @media ($small) {
-        width: $small-standard-diameter;
+    @media #{$tablet} {
+        width: $tablet-standard-diameter;
         .figure {
-            font-size: 120px;
-            height: $small-standard-diameter;
-            line-height: $small-standard-diameter;
-        }
-        .figure-title {
-            font-size: 36px;
+            height: $tablet-standard-diameter;
+            line-height: $tablet-standard-diameter;
         }
     }
 
-    @media ($medium) {
-        width: $medium-standard-diameter;
-        .figure {
-            font-size: 120px;
-            height: $medium-standard-diameter;
-            line-height: $medium-standard-diameter;
-        }
-        .figure-title {
-            font-size: 36px;
-        }
-    }
-
-    @media ($large) {
+    @media #{$large} {
         width: $large-standard-diameter;
         .figure {
-            font-size: 120px;
             height: $large-standard-diameter;
             line-height: $large-standard-diameter;
         }
         .figure-title {
-            font-size: 36px;
+            font-size: 35%;
         }
     }
 
-    @media ($xlarge) {
+    @media #{$xlarge} {
         width: $xlarge-standard-diameter;
         .figure {
-            font-size: 120px;
+            font-size: 150%;
             height: $xlarge-standard-diameter;
             line-height: $xlarge-standard-diameter;
         }
         .figure-title {
-            font-size: 36px;
+            font-size: 45%;
         }
     }
 }
@@ -156,6 +143,16 @@ $small-standard-diameter: 296px;
 .crown {
     position:relative;
     top:2px;
+    width: 36px;
+    @media #{$tablet} {
+        width: 52px;
+    }
+    @media #{$large} {
+        width: 75px;
+    }
+    @media #{$xlarge} {
+        width: 96px;
+    }
 }
 .govuk {
     text-transform: uppercase;
@@ -170,5 +167,9 @@ $small-standard-diameter: 296px;
 
 .pp-powered {
     clear: both;
-    font-size: 27px;
+    padding-top: 6%;
+    font-size: 50%;
+    @media #{$large} {
+        font-size: 33.75%;
+    }
 }
