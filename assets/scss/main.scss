@@ -24,7 +24,7 @@ body {
     height: 100%;
     overflow: hidden;
     cursor: none;
-    font-family: "ntatabularnumbers", "nta", Arial, sans-serif;
+    font-family: "nta", Arial, sans-serif;
     font-weight: bold;
     line-height: 1.18;
 	color: $white;
@@ -89,14 +89,14 @@ body {
 }
 
 $xlarge-standard-diameter: 296px;
-$large-standard-diameter: 200px;
+$large-standard-diameter: 185px;
 $tablet-standard-diameter: 160px;
-$mobile-standard-diameter: 75px;
+$mobile-standard-diameter: 85px;
 
 .figure-item {
     width: $mobile-standard-diameter;
     .figure {
-        font-size: 140%;
+        font-size: 120%;
         height: $mobile-standard-diameter;
         line-height: $mobile-standard-diameter;
     }
@@ -116,6 +116,7 @@ $mobile-standard-diameter: 75px;
     @media #{$large} {
         width: $large-standard-diameter;
         .figure {
+            font-size: 105%;
             height: $large-standard-diameter;
             line-height: $large-standard-diameter;
         }
@@ -127,7 +128,7 @@ $mobile-standard-diameter: 75px;
     @media #{$xlarge} {
         width: $xlarge-standard-diameter;
         .figure {
-            font-size: 150%;
+            font-size: 120%;
             height: $xlarge-standard-diameter;
             line-height: $xlarge-standard-diameter;
         }
