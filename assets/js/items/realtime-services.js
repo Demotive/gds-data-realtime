@@ -3,28 +3,28 @@ var offline = true;
 var list = {
   carers: {
     urlUsers: '/carers-users',
-    offline: '../data/carers-allowance.json',
+    offline: 'data/carers-allowance.json',
     usersCount: [],
     offlineData: [],
     cssClass: '.carers'
   },
   licensing: {
     urlUsers: '/licensing-users',
-    offline: '../data/licensing.json',
+    offline: 'data/licensing.json',
     usersCount: [],
     offlineData: [],
     cssClass: '.licensing'
   },
   sorn: {
     urlUsers: '/sorn-users',
-    offline: '../data/sorn.json',
+    offline: 'data/sorn.json',
     usersCount: [],
     offlineData: [],
     cssClass: '.sorn'
   },
   taxDisc: {
     urlUsers: '/tax-disc-users',
-    offline: '../data/tax-disc.json',
+    offline: 'data/tax-disc.json',
     usersCount: [],
     offlineData: [],
     cssClass: '.tax-disc'
@@ -34,27 +34,27 @@ var list = {
 var fcoList = {
   legalise: {
     urlUsers: '/legalise-users',
-    offline: '../data/pay-legalisation-post.json',
+    offline: 'data/pay-legalisation-post.json',
     offlineData: []
   },
   legalisePremium: {
     urlUsers: '/legalise-premium-users',
-    offline: '../data/pay-legalisation-drop-off.json',
+    offline: 'data/pay-legalisation-drop-off.json',
     offlineData: []
   },
   marriedAbroad: {
     urlUsers: '/married-abroad-users',
-    offline: '../data/pay-foreign-marriage-certificates.json',
+    offline: 'data/pay-foreign-marriage-certificates.json',
     offlineData: []
   },
   birthAbroad: {
     urlUsers: '/birth-abroad-users',
-    offline: '../data/pay-register-birth-abroad.json',
+    offline: 'data/pay-register-birth-abroad.json',
     offlineData: []
   },
   deathAbroad: {
     urlUsers: '/death-abroad-users',
-    offline: '../data/pay-register-death-abroad.json',
+    offline: 'data/pay-register-death-abroad.json',
     offlineData: []
   }
 };
